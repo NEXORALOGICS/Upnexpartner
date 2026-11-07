@@ -323,18 +323,16 @@
   .contact-alt{margin-top:16px;font-size:0.84rem;color:var(--grey);text-align:center;}
   .contact-alt a{color:var(--accent-text);font-weight:700;text-decoration:underline;}
   /* Case studies: the existing palette and card language, with horizontal browsing. */
-  .study-head{display:flex;align-items:end;justify-content:space-between;gap:20px;flex-wrap:wrap;}
-  .study-controls{display:flex;gap:10px;}
+  .study-controls{display:flex;justify-content:flex-end;gap:10px;margin:-34px 0 14px;}
   .study-arrow{width:46px;height:46px;border:1px solid var(--line);border-radius:50%;background:var(--surface);color:var(--navy);font-size:1.5rem;cursor:pointer;transition:background .2s,transform .2s;}
   .study-arrow:hover:not(:disabled){background:var(--surface-2);transform:translateY(-2px);}
   .study-arrow:disabled{opacity:.35;cursor:default;}
-  .study-carousel{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:8px 2px 24px;scrollbar-width:thin;scrollbar-color:var(--lime) var(--surface);}
-  .study-card{flex:0 0 calc((100% - 40px)/3);min-width:0;text-align:left;scroll-snap-align:start;cursor:pointer;color:var(--text);transition:transform .2s,border-color .2s;}
-  .study-card:hover{transform:translateY(-5px);border-color:var(--lime);}
-  .study-card .study-amount{font:900 clamp(2rem,3vw,3rem)/1 var(--display);color:var(--accent-text);margin:18px 0;}
-  .study-card .study-title{font:800 1.2rem/1.3 var(--display);margin-bottom:14px;}
-  .study-card .study-meta{font-size:.87rem;color:var(--grey);margin:12px 0 18px;}
-  .study-card .study-more{font-weight:800;color:var(--accent-text);font-size:.88rem;}
+  .study-carousel{display:flex;gap:1px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;border:1px solid var(--line);background:var(--line);scrollbar-width:thin;scrollbar-color:var(--lime) var(--surface);}
+  .study-card{appearance:none;flex:0 0 calc((100% - 2px)/3);min-width:0;min-height:205px;text-align:left;scroll-snap-align:start;cursor:pointer;color:var(--text);border:0;border-radius:0;font:inherit;}
+  .study-card:hover,.study-card:focus-visible{background:var(--surface-2);}
+  .study-card:focus-visible{outline:2px solid var(--accent-text);outline-offset:-3px;}
+  .study-card h3{margin-top:12px;}
+  .study-card p{margin-top:12px;}
   .study-dialog{border:0;border-radius:24px;padding:0;width:min(800px,calc(100% - 28px));max-height:min(92dvh,900px);background:var(--bg);color:var(--text);box-shadow:0 30px 90px #061c1390;overflow:auto;}
   .study-dialog::backdrop{background:rgba(5,25,15,.77);backdrop-filter:blur(5px);}
   .study-dialog .study-modal-top{background:var(--surface-2);padding:32px clamp(22px,5vw,48px);border-bottom:1px solid var(--line);}
@@ -342,6 +340,11 @@
   .study-dialog .modal-lead{font-size:1rem;color:var(--grey);max-width:65ch;}
   .study-dialog .modal-body{padding:28px clamp(22px,5vw,48px) 40px;}
   .study-dialog .modal-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:28px;}
+  .study-visual{position:relative;overflow:hidden;background:linear-gradient(130deg,var(--navy),#1b7f4d);color:white;border-radius:16px;margin-bottom:24px;padding:22px 26px;display:grid;grid-template-columns:1fr 1.2fr;align-items:center;gap:18px;min-height:180px;}
+  .study-visual strong{font:900 clamp(2.4rem,6vw,4rem)/1 var(--display);display:block;margin:10px 0;}
+  .study-visual span{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;opacity:.85;}
+  .study-visual svg{width:100%;height:auto;max-height:150px;}
+  .study-visual .visual-caption{position:absolute;right:18px;bottom:10px;font-size:.66rem;opacity:.7;}
   .study-dialog .modal-stat{border:1px solid var(--line);background:var(--surface);padding:16px;border-radius:12px;}
   .study-dialog .modal-stat strong{display:block;color:var(--accent-text);font:900 1.3rem var(--display);margin-top:6px;}
   .study-dialog .modal-columns{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:24px;}
@@ -350,8 +353,8 @@
   .study-dialog .modal-quote{padding:20px;border-left:3px solid var(--lime);background:var(--surface);border-radius:0 12px 12px 0;margin:22px 0 26px;line-height:1.5;}
   .study-close{position:absolute;top:20px;right:20px;border:1px solid var(--line);background:white;border-radius:50%;width:40px;height:40px;font-size:1.6rem;cursor:pointer;color:var(--navy);}
   .study-dialog:focus{outline:none;}
-  @media(max-width:850px){.study-card{flex-basis:calc((100% - 20px)/2);}}
-  @media(max-width:560px){.study-card{flex-basis:88%;}.study-dialog .modal-stats{grid-template-columns:1fr 1fr;}.study-dialog .modal-columns{grid-template-columns:1fr;gap:18px;}.study-dialog .study-modal-top{padding-top:58px;}}
+  @media(max-width:850px){.study-card{flex-basis:calc((100% - 1px)/2);}}
+  @media(max-width:560px){.study-card{flex-basis:88%;}.study-controls{margin-top:-34px;}.study-dialog .modal-stats{grid-template-columns:1fr 1fr;}.study-dialog .modal-columns{grid-template-columns:1fr;gap:18px;}.study-dialog .study-modal-top{padding-top:58px;}.study-visual{grid-template-columns:1fr;padding-bottom:36px;}}
   @media(prefers-reduced-motion:reduce){.study-carousel{scroll-behavior:auto;}.study-card,.study-arrow{transition:none;}}
 </style>
 </head>
@@ -576,15 +579,14 @@
 <!-- LONG-TERM GROWTH IMPACT -->
 <section class="section" id="growth">
   <div class="wrap">
-    <div class="section-head study-head">
+    <div class="section-head">
       <span class="pill-label on-dark">↗ Proof that it works</span>
       <h2>Real results <span class="accent">matter</span></h2>
-      <div class="study-controls" aria-label="Browse case studies">
-        <button class="study-arrow" id="study-prev" type="button" aria-label="Previous case studies">&#8249;</button>
-        <button class="study-arrow" id="study-next" type="button" aria-label="Next case studies">&#8250;</button>
-      </div>
     </div>
-    <p style="color:var(--grey);margin-bottom:20px;">Explore how targeted outreach and stronger positioning have helped freelancers and agencies grow on Upwork.</p>
+    <div class="study-controls" aria-label="Browse case studies">
+      <button class="study-arrow" id="study-prev" type="button" aria-label="Previous case studies">&#8249;</button>
+      <button class="study-arrow" id="study-next" type="button" aria-label="Next case studies">&#8250;</button>
+    </div>
     <div class="study-carousel" id="study-carousel" aria-label="Upwork success stories"></div>
   </div>
 </section>
@@ -597,6 +599,15 @@
     <p class="modal-lead" id="study-modal-lead"></p>
   </div>
   <div class="modal-body">
+    <div class="study-visual" role="img" aria-label="Illustrative growth graphic, not a screenshot or verified monthly revenue chart">
+      <div><span>Upwork success story</span><strong id="study-visual-value"></strong><span id="study-visual-type"></span></div>
+      <svg viewBox="0 0 300 140" aria-hidden="true" focusable="false">
+        <path d="M4 122H296M4 82H296M4 42H296" fill="none" stroke="#ffffff" stroke-opacity=".22" stroke-dasharray="5 7"/>
+        <path d="M8 118C56 113 72 105 105 91S159 83 187 57 244 40 290 12" fill="none" stroke="#8BE0B2" stroke-width="7" stroke-linecap="round"/>
+        <circle cx="290" cy="12" r="8" fill="#fff"/>
+      </svg>
+      <span class="visual-caption">Illustrative graphic · not monthly revenue data</span>
+    </div>
     <div class="modal-stats" id="study-modal-stats"></div>
     <div class="modal-columns">
       <section><h3>The challenge</h3><ul id="study-modal-challenges"></ul></section>
@@ -759,6 +770,8 @@
   function openStudy(study){
     document.getElementById('study-modal-title').textContent=study.title;
     document.getElementById('study-modal-lead').textContent=study.lead;
+    document.getElementById('study-visual-value').textContent=study.amount;
+    document.getElementById('study-visual-type').textContent=study.type+' · '+study.status;
     const stats=document.getElementById('study-modal-stats');
     stats.replaceChildren(...[['Revenue',study.amount],['Timeline',study.duration],['Profile',study.type],['Status',study.status]].map(([label,value])=>{
       const box=document.createElement('div');box.className='modal-stat';
@@ -776,11 +789,11 @@
     const card=document.createElement('button');
     card.type='button';card.className='who-card study-card';
     const tag=document.createElement('span');tag.className='tag';tag.textContent=study.type+' — '+study.duration;
-    const amount=document.createElement('div');amount.className='study-amount';amount.textContent=study.amount;
-    const title=document.createElement('div');title.className='study-title';title.textContent=study.title;
-    const meta=document.createElement('div');meta.className='study-meta';meta.textContent=study.status;
-    const more=document.createElement('span');more.className='study-more';more.textContent='Read full case study ↗';
-    card.append(tag,amount,title,meta,more);
+    const title=document.createElement('h3');title.textContent=study.title;
+    const meta=document.createElement('p');
+    const bold=document.createElement('b');bold.textContent='Result: ';
+    meta.append(bold,document.createTextNode(study.amount+' revenue · '+study.status));
+    card.append(tag,title,meta);
     card.addEventListener('click',()=>openStudy(study));
     studyTrack.append(card);
   });
@@ -790,7 +803,7 @@
   }
   function moveStudies(direction){
     const card=studyTrack.querySelector('.study-card');
-    if(card)studyTrack.scrollBy({left:direction*(card.getBoundingClientRect().width+20),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+    if(card)studyTrack.scrollBy({left:direction*(card.getBoundingClientRect().width+1),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
   }
   studyPrev.addEventListener('click',()=>moveStudies(-1));
   studyNext.addEventListener('click',()=>moveStudies(1));
