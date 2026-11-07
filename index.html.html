@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Upnex — Upwork Outreach Management</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAA/CAMAAABnwz74AAAAkFBMVEXd3d3u7u7M3d13u5lVmXe73cxVu4giqmZEmXeIzKozu3ciu2ZVqojd7u6qzLtEu4giu3dmu5kzqmYimWbd7t2ZzLtEu3fM3cwzqncimVUiqneIu6pEqneZu6p3u6qZzKoiiFURmVURiFURmWZmu4hVqnczmWZmqoi7zMx3qpm7zLsiqlURqmaq3btEqogRqlWiO1fKAAADs0lEQVRIx72V6XKbShCFZzGMkWDEakAiQVhYV4kV5/3fLr0Mi2U5C1Td/uGyJPrjTPfpHiHWhlwZ/z9ArQMI/SDWADzfPK4AqGCzNWG0FBDZXWyMSZbWQOkU0k22EJAXT4byFwLKpHL5tV4AEAGdPt6brM4WAGxIbzdxDAr+HaA0q99u40VHEC6fABkQDv+swCv0jgB4gMwEC4oolQ8Ayl+gAKNsqIUUX5YAvpoRULcLAF415R8XKMgTrECXZWF4PD4vAFg+wOmxVGF2LO4AhIcx21WqpODJFz4Caqo/EOwdgE4x/FGMCqumgmC1BQmou0d8Q/lwD9CT1ZoR0LrRo+1FAqb+lepTwNMAEP5ms0fVRzRNu2fAyyfVcoBtvB0BwWYTbxHwDBJUAx1AgJWfA3wc1RGgnmJS1HXP51Jq/PeUZf/lfwTsHODA02ey07OWHpm4y84X+RtAT8PmAApTNrg8TlB37Uys5Z8AZgAE+CHFrO7gTFzXZ2/KiPLoFuBjnVwXxM4M6xNKmGA167r+Bmu5bVshc6t7v9etF90BqME28NqmOMPYWDwKKICz2DPounh9tSeFVeLdHoGNxL41sHe+PYi83/Ie+iLFC377UtFm5MeL6B6g5V93Sqrv0qbUwlMohu/nkR5unQhHEA0v8MBN0eghPUvEitM/dgKgVCxi8coNoXKQgLru+nwCVNp6XtHTNWlo/AYAdWGqAAnYkolqfFHiDs5+ygMet3ZyIvvAMrkqqR8bwNZdF4oJMGyTiBX5+Q0g4cOR7dQuxqvEmbgfEzjIYaZSDEgcIPdpClOPHUkNcyZmwGRorjY+SRuJft2UTigWjUfiyi9BQDY/AVSBq2UZULDyVloUVpEAgl7NcJP13XtA9A7AB8ITQnWvSSTHq+A67DkGTNcaO9P8cFv5zQxdsf4bCsDL8BUskA3v7K+/KyKPMHwGe0ckCS3QwRSOi5arkw68nD+Hro1cMej6JrGlUN8DKjEKGBeh84Ej5Dp7ZyQoYzqMWdqkw0rruqltyTAIib1cCm6qeVMjIJ8NC9TOnOCvOYXiA2AWr9wU94zQ+yEdjs4C+9kd0n/IvxodzQAyKpq5hqyrgvlNwm18qmZTHeRyDoBKHgBxhTCnrj7r2RodFbSXfo8PQE/9ob7z1yj71W+a5i3URSnfx+BEYbUf+klgx7zbGy8X4t4dNLdy9GGt/0X0Y99v428BaOVuFeAKt+0KQIK1/7lGwU9o3xrAgdprlwNkjiFXAD6N1YBfW5JZj0UrtvcAAAAASUVORK5CYII=">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,500;0,700;0,800;0,900;1,700;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -321,6 +322,37 @@
   .cf .btn{justify-content:center;width:100%;}
   .contact-alt{margin-top:16px;font-size:0.84rem;color:var(--grey);text-align:center;}
   .contact-alt a{color:var(--accent-text);font-weight:700;text-decoration:underline;}
+  /* Case studies: the existing palette and card language, with horizontal browsing. */
+  .study-head{display:flex;align-items:end;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+  .study-controls{display:flex;gap:10px;}
+  .study-arrow{width:46px;height:46px;border:1px solid var(--line);border-radius:50%;background:var(--surface);color:var(--navy);font-size:1.5rem;cursor:pointer;transition:background .2s,transform .2s;}
+  .study-arrow:hover:not(:disabled){background:var(--surface-2);transform:translateY(-2px);}
+  .study-arrow:disabled{opacity:.35;cursor:default;}
+  .study-carousel{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:8px 2px 24px;scrollbar-width:thin;scrollbar-color:var(--lime) var(--surface);}
+  .study-card{flex:0 0 calc((100% - 40px)/3);min-width:0;text-align:left;scroll-snap-align:start;cursor:pointer;color:var(--text);transition:transform .2s,border-color .2s;}
+  .study-card:hover{transform:translateY(-5px);border-color:var(--lime);}
+  .study-card .study-amount{font:900 clamp(2rem,3vw,3rem)/1 var(--display);color:var(--accent-text);margin:18px 0;}
+  .study-card .study-title{font:800 1.2rem/1.3 var(--display);margin-bottom:14px;}
+  .study-card .study-meta{font-size:.87rem;color:var(--grey);margin:12px 0 18px;}
+  .study-card .study-more{font-weight:800;color:var(--accent-text);font-size:.88rem;}
+  .study-dialog{border:0;border-radius:24px;padding:0;width:min(800px,calc(100% - 28px));max-height:min(92dvh,900px);background:var(--bg);color:var(--text);box-shadow:0 30px 90px #061c1390;overflow:auto;}
+  .study-dialog::backdrop{background:rgba(5,25,15,.77);backdrop-filter:blur(5px);}
+  .study-dialog .study-modal-top{background:var(--surface-2);padding:32px clamp(22px,5vw,48px);border-bottom:1px solid var(--line);}
+  .study-dialog h2{font-size:clamp(1.7rem,4vw,2.75rem);line-height:1.08;margin:14px 42px 12px 0;}
+  .study-dialog .modal-lead{font-size:1rem;color:var(--grey);max-width:65ch;}
+  .study-dialog .modal-body{padding:28px clamp(22px,5vw,48px) 40px;}
+  .study-dialog .modal-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:28px;}
+  .study-dialog .modal-stat{border:1px solid var(--line);background:var(--surface);padding:16px;border-radius:12px;}
+  .study-dialog .modal-stat strong{display:block;color:var(--accent-text);font:900 1.3rem var(--display);margin-top:6px;}
+  .study-dialog .modal-columns{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:24px;}
+  .study-dialog h3{font:800 1.1rem var(--display);margin-bottom:12px;}
+  .study-dialog ul{padding-left:19px;color:var(--grey);line-height:1.65;}
+  .study-dialog .modal-quote{padding:20px;border-left:3px solid var(--lime);background:var(--surface);border-radius:0 12px 12px 0;margin:22px 0 26px;line-height:1.5;}
+  .study-close{position:absolute;top:20px;right:20px;border:1px solid var(--line);background:white;border-radius:50%;width:40px;height:40px;font-size:1.6rem;cursor:pointer;color:var(--navy);}
+  .study-dialog:focus{outline:none;}
+  @media(max-width:850px){.study-card{flex-basis:calc((100% - 20px)/2);}}
+  @media(max-width:560px){.study-card{flex-basis:88%;}.study-dialog .modal-stats{grid-template-columns:1fr 1fr;}.study-dialog .modal-columns{grid-template-columns:1fr;gap:18px;}.study-dialog .study-modal-top{padding-top:58px;}}
+  @media(prefers-reduced-motion:reduce){.study-carousel{scroll-behavior:auto;}.study-card,.study-arrow{transition:none;}}
 </style>
 </head>
 <body>
@@ -544,29 +576,37 @@
 <!-- LONG-TERM GROWTH IMPACT -->
 <section class="section" id="growth">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head study-head">
       <span class="pill-label on-dark">↗ Proof that it works</span>
       <h2>Real results <span class="accent">matter</span></h2>
-    </div>
-    <div class="who-grid">
-      <div class="who-card">
-        <span class="tag">CASE STUDY — COMING SOON</span>
-        <h3>Qualified meetings</h3>
-        <p><b>What we track:</b> Relevant conversations and scheduled calls</p>
-      </div>
-      <div class="who-card">
-        <span class="tag">OUTREACH METRICS</span>
-        <h3>Better-fit proposals</h3>
-        <p><b>What we track:</b> Applications, responses and opportunities</p>
-      </div>
-      <div class="who-card">
-        <span class="tag">CLIENT STORIES</span>
-        <h3>Testimonials coming soon</h3>
-        <p><b>Note:</b> Verified client stories will be shared here</p>
+      <div class="study-controls" aria-label="Browse case studies">
+        <button class="study-arrow" id="study-prev" type="button" aria-label="Previous case studies">&#8249;</button>
+        <button class="study-arrow" id="study-next" type="button" aria-label="Next case studies">&#8250;</button>
       </div>
     </div>
+    <p style="color:var(--grey);margin-bottom:20px;">Explore how targeted outreach and stronger positioning have helped freelancers and agencies grow on Upwork.</p>
+    <div class="study-carousel" id="study-carousel" aria-label="Upwork success stories"></div>
   </div>
 </section>
+
+<dialog class="study-dialog" id="study-dialog" aria-labelledby="study-modal-title">
+  <button class="study-close" type="button" id="study-close" aria-label="Close case study">&times;</button>
+  <div class="study-modal-top">
+    <span class="pill-label">↗ Upnex case study</span>
+    <h2 id="study-modal-title"></h2>
+    <p class="modal-lead" id="study-modal-lead"></p>
+  </div>
+  <div class="modal-body">
+    <div class="modal-stats" id="study-modal-stats"></div>
+    <div class="modal-columns">
+      <section><h3>The challenge</h3><ul id="study-modal-challenges"></ul></section>
+      <section><h3>Our approach</h3><ul id="study-modal-approach"></ul></section>
+    </div>
+    <h3>The results</h3><ul id="study-modal-results"></ul>
+    <blockquote class="modal-quote" id="study-modal-quote"></blockquote>
+    <a href="#contact" class="btn btn-primary" id="study-modal-cta">Book a Free Strategy Call</a>
+  </div>
+</dialog>
 
 <!-- WHY MULTI-PLATFORM -->
 <section class="section">
@@ -668,6 +708,100 @@
 </dialog>
 
 <script>
+  // Add future case studies here; the carousel and popup render from this list.
+  const CASE_STUDIES = [
+    {
+      title:'From Zero to $90K: Turning a Freelancer into a Top Rated Success',
+      amount:'$90K',type:'Freelancer',status:'Top Rated / Top Rated Plus',duration:'12 months',
+      lead:'How profile optimization and consistent Upwork outreach helped turn a new freelancer profile into a profitable business.',
+      challenges:['Low visibility in Upwork search','Difficulty winning projects','Inconsistent client communication','Limited credibility with prospective clients'],
+      approach:['SEO-focused profile bio and stronger portfolio','12–15 personalized proposals each day','Clear expertise and credibility signals','Improved proposal-to-chat and chat-to-close process','Repeatable outreach and follow-up system'],
+      results:['$90,000 in revenue generated','Top Rated achievement (also described as Top Rated Plus in the source)','40% reported closure rate','Sustainable client acquisition workflow'],
+      quote:'Consistency + Outreach + Positioning = Growth.'
+    },
+    {
+      title:'Building Credibility, Winning Clients: $19K Achieved in Record Time',
+      amount:'$19K',type:'Freelancer',status:'Top Rated',duration:'6 months',
+      lead:'A stronger profile, personalized outreach and a focused conversion system helped a freelancer build a profitable Upwork presence.',
+      challenges:['Low profile visibility','Struggling to close clients','No reliable outreach system'],
+      approach:['Profile optimization','Personalized client outreach','Positioning and branding','Conversion-focused communication','Scaling the repeatable growth process'],
+      results:['$19,000 in revenue generated','Top Rated status achieved','Better credibility and long-term client relationships'],
+      quote:'Consistency, outreach, and positioning are the keys to transforming an Upwork profile into a business.'
+    },
+    {
+      title:'Scaling Teams, Securing Growth: $50K as a Top Rated Agency',
+      amount:'$50K',type:'Agency',status:'Top Rated Agency',duration:'9 months',
+      lead:'An agency-focused outreach and credibility strategy helped build a repeatable Upwork client acquisition engine.',
+      challenges:['No agency outreach system','Difficulty standing out against freelancers','Low client trust','Poor proposal-to-chat ratio'],
+      approach:['Agency-focused profile positioning','Daily targeted proposals to businesses','Case studies showcasing team expertise','Improved proposals and discovery calls','Repeatable bidding and follow-up workflow'],
+      results:['$50,000 in agency revenue','Top Rated Agency status','Improved proposal-to-chat ratio','Long-term clients secured'],
+      quote:'Agencies can stand out on Upwork with the right mix of outreach, positioning, and credibility building.'
+    },
+    {
+      title:'Authority + Outreach = $65K: How We Built a Profitable Agency Profile',
+      amount:'$65K',type:'Agency',status:'Top Rated Agency',duration:'10 months',
+      lead:'Niche-focused optimization, consistent proposals and stronger authority helped an agency compete for and win Upwork projects.',
+      challenges:['Low visibility in Upwork agency searches','Competition from established agencies','Low proposal-to-chat ratio','No consistent acquisition system'],
+      approach:['Niche-focused profile and portfolio','12–15 personalized proposals daily','Team expertise and case-study positioning','Proposal templates and call training','Repeatable outreach and follow-up'],
+      results:['$65,000 in agency revenue','Top Rated Agency badge earned','Boosted proposal-to-chat ratio','Long-term client contracts'],
+      quote:'Agencies can thrive on Upwork with the right mix of outreach, authority, and conversion strategy.'
+    }
+  ];
+
+  const studyTrack = document.getElementById('study-carousel');
+  const studyDialog = document.getElementById('study-dialog');
+  const studyPrev = document.getElementById('study-prev');
+  const studyNext = document.getElementById('study-next');
+  function fillList(id,items){
+    const list=document.getElementById(id);
+    list.replaceChildren(...items.map(item=>{const li=document.createElement('li');li.textContent=item;return li;}));
+  }
+  function openStudy(study){
+    document.getElementById('study-modal-title').textContent=study.title;
+    document.getElementById('study-modal-lead').textContent=study.lead;
+    const stats=document.getElementById('study-modal-stats');
+    stats.replaceChildren(...[['Revenue',study.amount],['Timeline',study.duration],['Profile',study.type],['Status',study.status]].map(([label,value])=>{
+      const box=document.createElement('div');box.className='modal-stat';
+      const l=document.createElement('span');l.textContent=label;
+      const v=document.createElement('strong');v.textContent=value;
+      box.append(l,v);return box;
+    }));
+    fillList('study-modal-challenges',study.challenges);
+    fillList('study-modal-approach',study.approach);
+    fillList('study-modal-results',study.results);
+    document.getElementById('study-modal-quote').textContent='“'+study.quote+'”';
+    studyDialog.showModal();
+  }
+  CASE_STUDIES.forEach(study=>{
+    const card=document.createElement('button');
+    card.type='button';card.className='who-card study-card';
+    const tag=document.createElement('span');tag.className='tag';tag.textContent=study.type+' — '+study.duration;
+    const amount=document.createElement('div');amount.className='study-amount';amount.textContent=study.amount;
+    const title=document.createElement('div');title.className='study-title';title.textContent=study.title;
+    const meta=document.createElement('div');meta.className='study-meta';meta.textContent=study.status;
+    const more=document.createElement('span');more.className='study-more';more.textContent='Read full case study ↗';
+    card.append(tag,amount,title,meta,more);
+    card.addEventListener('click',()=>openStudy(study));
+    studyTrack.append(card);
+  });
+  function updateStudyArrows(){
+    studyPrev.disabled=studyTrack.scrollLeft<5;
+    studyNext.disabled=studyTrack.scrollLeft+studyTrack.clientWidth>=studyTrack.scrollWidth-5;
+  }
+  function moveStudies(direction){
+    const card=studyTrack.querySelector('.study-card');
+    if(card)studyTrack.scrollBy({left:direction*(card.getBoundingClientRect().width+20),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+  }
+  studyPrev.addEventListener('click',()=>moveStudies(-1));
+  studyNext.addEventListener('click',()=>moveStudies(1));
+  studyTrack.addEventListener('scroll',updateStudyArrows,{passive:true});
+  window.addEventListener('resize',updateStudyArrows);
+  updateStudyArrows();
+  document.getElementById('study-close').addEventListener('click',()=>studyDialog.close());
+  studyDialog.addEventListener('click',event=>{if(event.target===studyDialog)studyDialog.close();});
+  document.getElementById('study-modal-cta').addEventListener('click',event=>{
+    event.preventDefault();studyDialog.close();document.getElementById('contact').showModal();
+  });
   /* ====== EDIT THESE ====== */
   const CONTACT_EMAIL = 'hello@upnex.com';   // jis email par client ka message aaye
   /* ======================== */
