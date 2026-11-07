@@ -839,28 +839,33 @@
       err.hidden = false;
       return;
     }
-    // Preserve the visitor's selected enquiry type and message in the email.
-    f.set('name', name);
-    f.set('email', email);
-    f.set('_subject', 'Upnex website enquiry — ' + String(f.get('package') || 'General'));
-    f.set('_template', 'table');
+    // FormSubmit's Fetch endpoint expects a JSON payload. Include all form fields.
+    const payload = {
+      name,
+      email,
+      package: String(f.get('package') || 'General'),
+      message: String(f.get('message') || '').trim(),
+      _subject: 'Upnex website enquiry — ' + String(f.get('package') || 'General'),
+      _template: 'table',
+      _honey: String(f.get('_honey') || '')
+    };
     sendButton.disabled = true;
     sendButton.textContent = 'Sending…';
     try {
       const response = await fetch(FORM_ENDPOINT, {
         method: 'POST',
-        body: f,
-        headers: { 'Accept': 'application/json' }
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
       });
-      const result = await response.json();
-      if (!response.ok || result.success === false || result.success === 'false') {
-        throw new Error('Form delivery was not accepted.');
+      const result = await response.json().catch(() => null);
+      if (!response.ok || !result || result.success !== true && result.success !== 'true') {
+        throw new Error('FormSubmit did not confirm acceptance.');
       }
       form.reset();
       success.textContent = 'Thank you! Your enquiry has been submitted. Our team will get back to you soon.';
       success.hidden = false;
     } catch (error) {
-      err.textContent = 'We could not send your enquiry. Please try again, or email upnexpartners@gmail.com directly.';
+      err.textContent = 'Your enquiry was not confirmed as sent. Please try again later, or email upnexpartners@gmail.com directly.';
       err.hidden = false;
     } finally {
       sendButton.disabled = false;
