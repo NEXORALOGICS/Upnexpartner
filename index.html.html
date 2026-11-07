@@ -351,6 +351,39 @@
   .study-dialog .modal-quote{padding:20px;border-left:3px solid var(--lime);background:var(--surface);border-radius:0 12px 12px 0;margin:22px 0 26px;line-height:1.5;}
   .study-close{position:absolute;top:20px;right:20px;border:1px solid var(--line);background:white;border-radius:50%;width:40px;height:40px;font-size:1.6rem;cursor:pointer;color:var(--navy);}
   .study-dialog:focus{outline:none;}
+  /* New offers reuse the existing package cards, palette and modal treatment. */
+  .offer-intro{max-width:780px;color:var(--grey);font-size:1rem;line-height:1.7;margin:-25px 0 32px;}
+  .package-cards .pkg{min-height:435px;}
+  .package-cards .pkg .price{margin-top:23px;}
+  .package-cards .pkg .price small{font-size:.78rem;}
+  .package-cards .pkg .rev-model{margin-top:auto;}
+  .package-cards .pkg h3{margin-top:20px;}
+  .package-cards .pkg .tag{color:var(--accent-text);}
+  .offer-dialog{border:0;border-radius:22px;padding:0;width:min(820px,calc(100% - 28px));max-height:92dvh;overflow:auto;background:var(--bg);color:var(--text);box-shadow:0 28px 85px #061c1390;}
+  .offer-dialog::backdrop{background:rgba(5,25,15,.72);backdrop-filter:blur(4px);}
+  .offer-dialog-header{background:var(--surface-2);padding:32px clamp(22px,5vw,46px);border-bottom:1px solid var(--line);position:relative;}
+  .offer-dialog-header h2{font-size:clamp(1.7rem,3.6vw,2.5rem);margin:12px 42px 12px 0;}
+  .offer-dialog-header p{color:var(--grey);line-height:1.6;max-width:65ch;}
+  .offer-dialog-body{padding:30px clamp(22px,5vw,46px) 38px;}
+  .offer-dialog h3{font-size:1.1rem;margin-bottom:14px;}
+  .offer-dialog .offer-list{display:grid;grid-template-columns:1fr 1fr;gap:14px 26px;list-style:none;padding:0;margin:0 0 28px;}
+  .offer-list li{font-size:.9rem;line-height:1.55;color:var(--grey);border-bottom:1px solid var(--line);padding:0 0 12px 20px;position:relative;}
+  .offer-list li::before{content:'↗';position:absolute;left:0;color:var(--accent-text);}
+  .offer-list strong{color:var(--text);}
+  .offer-dialog .revenue-box{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 24px;margin-bottom:24px;}
+  .revenue-box p{color:var(--grey);line-height:1.6;margin-top:7px;}
+  .launch-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:start;}
+  .launch-lead{font-size:1.08rem;color:var(--grey);line-height:1.7;margin:24px 0;}
+  .launch-price{display:flex;align-items:baseline;gap:12px;margin:30px 0 12px;}
+  .launch-price strong{font:900 3rem var(--display);}
+  .launch-price span{color:var(--grey);font-size:.9rem;}
+  .launch-services{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:28px;border:1px solid var(--line);border-radius:20px;background:var(--surface);}
+  .launch-service{padding:14px;border-bottom:1px solid var(--line);font-size:.88rem;line-height:1.55;}
+  .launch-service strong{display:block;color:var(--text);margin-bottom:5px;}
+  .launch-service span{color:var(--grey);}
+  .launch-service::before{content:'↗';color:var(--accent-text);display:block;margin-bottom:8px;}
+  @media(max-width:800px){.launch-grid{grid-template-columns:1fr;gap:28px;}.offer-dialog .offer-list{grid-template-columns:1fr;}}
+  @media(max-width:520px){.launch-services{grid-template-columns:1fr;padding:16px;}.offer-dialog-header{padding-top:58px;}}
   @media(max-width:850px){.study-card{flex-basis:calc((100% - 1px)/2);}}
   @media(max-width:560px){.study-card{flex-basis:88%;}.study-controls{margin-top:-34px;}.study-dialog .modal-stats{grid-template-columns:1fr 1fr;}.study-dialog .modal-columns{grid-template-columns:1fr;gap:18px;}.study-dialog .study-modal-top{padding-top:58px;}}
   @media(prefers-reduced-motion:reduce){.study-carousel{scroll-behavior:auto;}.study-card,.study-arrow{transition:none;}}
@@ -366,7 +399,8 @@
     <nav class="nav-links">
       <a href="#platforms"><span class="arrow">↗</span> Who we help</a>
       <a href="#how"><span class="arrow">↗</span> How it works</a>
-      <a href="#packages"><span class="arrow">↗</span> Industries</a>
+      <a href="#industries"><span class="arrow">↗</span> Industries</a>
+      <a href="#packages"><span class="arrow">↗</span> Packages</a>
       <a href="#growth"><span class="arrow">↗</span> Results</a>
     </nav>
     <a href="#contact" data-open-contact class="btn btn-primary">Get In Touch</a>
@@ -497,7 +531,7 @@
 </section>
 
 <!-- PACKAGES -->
-<section class="section" id="packages">
+<section class="section" id="industries">
   <div class="wrap">
     <div class="section-head">
       <span class="pill-label on-dark">↗ Industries we thrive in</span>
@@ -560,6 +594,99 @@
     <p class="proj-tag">Specialized positioning. Better-fit projects. Consistent outreach.</p>
   </div>
 </section>
+
+<!-- FINANCIAL MODEL & PACKAGE OPTIONS -->
+<section class="section" id="packages">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="pill-label on-dark">↗ Financial model</span>
+      <h2>Package <span class="accent">options</span></h2>
+    </div>
+    <p class="offer-intro">Three flexible partnership models for different stages of freelance business growth. Choose the investment, outreach capacity, account management and revenue-sharing structure that fits your goals.</p>
+    <div class="pkg-grid package-cards">
+      <article class="pkg">
+        <span class="tag">STARTER GROWTH</span>
+        <div class="price">$199<small>/month + 15% project commission</small></div>
+        <h3>Starter Growth</h3>
+        <p class="best-for">For freelancers and growing agencies building a consistent marketplace presence.</p>
+        <ul>
+          <li>Full outreach management</li>
+          <li>Targeted bidding and follow-ups</li>
+          <li>Client communication</li>
+        </ul>
+        <div class="rev-model">$199 monthly retainer · 15% commission · You retain 85%.</div>
+        <button type="button" class="btn btn-outline on-surface" data-package="starter">View Package Details</button>
+      </article>
+      <article class="pkg feature">
+        <span class="tag">GROWTH RETAINER</span>
+        <div class="price">$399<small>/month + 10% project commission</small></div>
+        <h3>Growth Retainer</h3>
+        <p class="best-for">For established freelancers, consultants and agencies ready for consistent acquisition.</p>
+        <ul>
+          <li>Advanced multi-platform outreach</li>
+          <li>Profile and portfolio optimization</li>
+          <li>Pre-sales support and weekly reports</li>
+        </ul>
+        <div class="rev-model">$399 monthly retainer · 10% commission · You retain 90%.</div>
+        <button type="button" class="btn btn-primary" data-package="growth">View Package Details</button>
+      </article>
+      <article class="pkg">
+        <span class="tag">SCALE PRO</span>
+        <div class="price">$999<small>/month · zero commission</small></div>
+        <h3>Scale Pro</h3>
+        <p class="best-for">For established agencies and high-earning professionals seeking comprehensive management.</p>
+        <ul>
+          <li>Full-scale premium outreach</li>
+          <li>Dedicated account management</li>
+          <li>Strategic consultation and reporting</li>
+        </ul>
+        <div class="rev-model">$999 flat monthly retainer · No commission · You retain 100%.</div>
+        <button type="button" class="btn btn-outline on-surface" data-package="scale">View Package Details</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- UPWORK PROFILE LAUNCH -->
+<section class="section" id="profile-launch">
+  <div class="wrap launch-grid">
+    <div>
+      <span class="pill-label on-dark">↗ Upwork profile launch</span>
+      <h2>Launch, Optimize &amp; Scale Your Upwork Presence <span class="accent">with Upnex</span></h2>
+      <p class="launch-lead">Your Upwork journey starts with the right foundation. Upnex builds professionally positioned freelancer and agency profiles designed to stand out, attract clients and unlock new opportunities.</p>
+      <p class="launch-lead">Whether you're starting from scratch or entering Upwork as an agency, we'll help you build a market-ready presence.</p>
+      <div class="launch-price"><strong>$500</strong><span>One-time setup fee</span></div>
+      <p style="color:var(--grey);margin-bottom:24px;">From profile launch to winning opportunities.</p>
+      <button type="button" class="btn btn-primary" id="launch-enquire">Launch My Upwork Profile</button>
+    </div>
+    <div class="launch-services" aria-label="What's included in profile launch">
+      <div class="launch-service"><strong>Profile Creation &amp; Setup</strong><span>Freelancer or agency profile structured around your expertise.</span></div>
+      <div class="launch-service"><strong>Strategic Positioning</strong><span>Define niche, services, ideal clients and differentiation.</span></div>
+      <div class="launch-service"><strong>Profile Optimization</strong><span>SEO-friendly titles, descriptions, keywords and skills.</span></div>
+      <div class="launch-service"><strong>Agency Branding</strong><span>Agency overview, tagline, business and team positioning.</span></div>
+      <div class="launch-service"><strong>Portfolio Development</strong><span>Present relevant work with compelling project descriptions.</span></div>
+      <div class="launch-service"><strong>Visual Branding</strong><span>Recommendations for imagery, logo and banner presentation.</span></div>
+      <div class="launch-service"><strong>Pricing Strategy</strong><span>Guidance on hourly rates and service pricing.</span></div>
+      <div class="launch-service"><strong>Final Profile Audit</strong><span>Review and optimize your profile before outreach.</span></div>
+    </div>
+  </div>
+</section>
+
+<dialog class="offer-dialog" id="offer-dialog" aria-labelledby="offer-title">
+  <div class="offer-dialog-header">
+    <button type="button" class="contact-x" id="offer-close" aria-label="Close package details">&times;</button>
+    <span class="pill-label">↗ Upnex partnership</span>
+    <h2 id="offer-title"></h2>
+    <p id="offer-best-for"></p>
+  </div>
+  <div class="offer-dialog-body">
+    <h3>What's Included</h3>
+    <ul class="offer-list" id="offer-features"></ul>
+    <div class="revenue-box"><h3>Revenue Model</h3><div id="offer-revenue"></div></div>
+    <p id="offer-positioning" style="color:var(--grey);margin-bottom:24px;line-height:1.6;"></p>
+    <button type="button" class="btn btn-primary" id="offer-enquire">Get Started With This Package</button>
+  </div>
+</dialog>
 
 <!-- PERFORMANCE GUARANTEE -->
 <section class="section" id="guarantee">
@@ -703,6 +830,10 @@
           <option>Free profile audit — existing profile</option>
           <option>3-month roadmap — new profile</option>
           <option>Meeting potential consultation</option>
+          <option>Starter Growth package</option>
+          <option>Growth Retainer package</option>
+          <option>Scale Pro package</option>
+          <option>Upwork Profile Launch — $500 one-time</option>
         </select>
       </div>
       <div><label for="cf-msg">Message</label><textarea id="cf-msg" name="message"></textarea></div>
@@ -714,6 +845,98 @@
 </dialog>
 
 <script>
+  // Package details are data-driven so new features can be added without redesigning cards.
+  const PACKAGES = {
+    starter: {
+      title:'Starter Growth — $199/month + 15% Project Commission',
+      bestFor:'Freelancers and growing agencies seeking a consistent presence across freelance marketplaces with professional outreach management.',
+      features:[
+        ['Full Outreach Management','Daily opportunity hunting and personalized proposals across selected platforms.'],
+        ['Targeted Bidding','Strategic project selection by skills, niche and business objectives.'],
+        ['Client Communication','Inbox management, initial responses and lead nurturing.'],
+        ['Follow-Up Management','Consistent follow-ups to maintain client engagement.'],
+        ['Discovery Call Scheduling','Meeting coordination for qualified opportunities.']
+      ],
+      revenue:['$199 fixed monthly retainer.','15% commission on successfully closed projects.','Client retains 85% of project revenue.'],
+      positioning:'An affordable entry point for freelancers and agencies seeking professional marketplace management.',
+      enquiry:'Starter Growth package'
+    },
+    growth: {
+      title:'Growth Retainer — $399/month + 10% Project Commission',
+      bestFor:'Mid-level freelancers, consultants and established agencies seeking stronger positioning and consistent client acquisition.',
+      features:[
+        ['Advanced Outreach Management','Daily personalized proposals targeting high-value opportunities.'],
+        ['Multi-Platform Targeting','Structured outreach across Upwork, Toptal and Freelancer.com.'],
+        ['Advanced Opportunity Research','Prioritize projects with stronger revenue potential.'],
+        ['Inbox & Client Management','Handle client responses and communication.'],
+        ['Lead Nurturing','Structured follow-ups to improve engagement.'],
+        ['Discovery Call Booking','Target of 2–3 calls per week for established profiles.'],
+        ['Advanced Pre-Sales Support','Customized SOWs, pricing breakdowns and proposal documents.'],
+        ['Profile Optimization','Improve titles, descriptions, keywords and positioning.'],
+        ['Portfolio Setup','Professional portfolio presentation to build credibility.'],
+        ['Weekly Performance Reports','Transparent outreach, response and pipeline reporting.']
+      ],
+      revenue:['$399 fixed monthly retainer.','10% commission on successfully closed projects.','Client retains 90% of project revenue.'],
+      positioning:'A balanced growth partnership for a more consistent client acquisition pipeline.',
+      enquiry:'Growth Retainer package'
+    },
+    scale: {
+      title:'Scale Pro — $999/month · Zero Commission',
+      bestFor:'Established agencies, high-earning freelancers and businesses seeking comprehensive marketplace management without sharing project revenue.',
+      features:[
+        ['Full-Scale Outreach Management','Opportunity hunting and personalized bidding across all three platforms.'],
+        ['Premium Project Targeting','Prioritize high-value and long-term client opportunities.'],
+        ['Higher-Volume Outreach','Increased capacity based on agreed account and platform requirements.'],
+        ['Dedicated Account Management','Priority account oversight and strategic coordination.'],
+        ['Priority Client Communication','Proactive inbox management, responses and follow-ups.'],
+        ['Discovery Call Booking','Target of 4–5 calls per week for established profiles.'],
+        ['Advanced Pre-Sales Support','Customized SOWs, proposals, pricing and documentation.'],
+        ['Strategic Profile Optimization','Improve marketplace visibility and profile positioning.'],
+        ['Professional Portfolio Development','Present services and previous work effectively.'],
+        ['Pipeline Monitoring','Track leads, conversations and conversion opportunities.'],
+        ['Weekly Performance Reports','Detailed insights and strategic recommendations.'],
+        ['Growth Consultation','Ongoing marketplace expansion and revenue guidance.']
+      ],
+      revenue:['$999 flat monthly retainer.','Zero commission on closed projects.','Client retains 100% of project revenue.'],
+      positioning:'A complete growth partnership with maximum revenue ownership and a dedicated outreach operation.',
+      enquiry:'Scale Pro package'
+    }
+  };
+  const offerDialog=document.getElementById('offer-dialog');
+  let selectedPackage=null;
+  function openPackage(key){
+    const pkg=PACKAGES[key];
+    if(!pkg)return;
+    selectedPackage=pkg;
+    document.getElementById('offer-title').textContent=pkg.title;
+    document.getElementById('offer-best-for').textContent=pkg.bestFor;
+    const list=document.getElementById('offer-features');
+    list.replaceChildren(...pkg.features.map(([title,detail])=>{
+      const li=document.createElement('li');
+      const strong=document.createElement('strong');strong.textContent=title+': ';
+      li.append(strong,document.createTextNode(detail));return li;
+    }));
+    document.getElementById('offer-revenue').replaceChildren(...pkg.revenue.map(value=>{
+      const p=document.createElement('p');p.textContent=value;return p;
+    }));
+    document.getElementById('offer-positioning').textContent=pkg.positioning;
+    offerDialog.showModal();
+  }
+  document.querySelectorAll('[data-package]').forEach(button=>button.addEventListener('click',()=>openPackage(button.dataset.package)));
+  document.getElementById('offer-close').addEventListener('click',()=>offerDialog.close());
+  offerDialog.addEventListener('click',event=>{if(event.target===offerDialog)offerDialog.close();});
+  function openEnquiry(service){
+    if(offerDialog.open)offerDialog.close();
+    document.getElementById('cf-pkg').value=service;
+    document.getElementById('cf-error').hidden=true;
+    document.getElementById('cf-success').hidden=true;
+    document.getElementById('contact').showModal();
+  }
+  document.getElementById('offer-enquire').addEventListener('click',()=>{
+    if(selectedPackage)openEnquiry(selectedPackage.enquiry);
+  });
+  document.getElementById('launch-enquire').addEventListener('click',()=>openEnquiry('Upwork Profile Launch — $500 one-time'));
+
   // Add future case studies here; the carousel and popup render from this list.
   const CASE_STUDIES = [
     {
