@@ -857,9 +857,15 @@
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(payload)
       });
+      // FormSubmit can accept the enquiry while returning a non-JSON body or
+      // omitting `success`. HTTP 2xx is the primary acknowledgement; only an
+      // explicit provider rejection should override it.
       const result = await response.json().catch(() => null);
-      if (!response.ok || !result || result.success !== true && result.success !== 'true') {
-        throw new Error('FormSubmit did not confirm acceptance.');
+      const explicitlyRejected = result && (
+        result.success === false || result.success === 'false'
+      );
+      if (!response.ok || explicitlyRejected) {
+        throw new Error('FormSubmit rejected the submission.');
       }
       form.reset();
       success.textContent = 'Thank you! Your enquiry has been submitted. Our team will get back to you soon.';
