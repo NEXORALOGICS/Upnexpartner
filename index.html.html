@@ -340,11 +340,9 @@
   .study-dialog .modal-lead{font-size:1rem;color:var(--grey);max-width:65ch;}
   .study-dialog .modal-body{padding:28px clamp(22px,5vw,48px) 40px;}
   .study-dialog .modal-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:28px;}
-  .study-visual{position:relative;overflow:hidden;background:linear-gradient(130deg,var(--navy),#1b7f4d);color:white;border-radius:16px;margin-bottom:24px;padding:22px 26px;display:grid;grid-template-columns:1fr 1.2fr;align-items:center;gap:18px;min-height:180px;}
-  .study-visual strong{font:900 clamp(2.4rem,6vw,4rem)/1 var(--display);display:block;margin:10px 0;}
-  .study-visual span{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;opacity:.85;}
-  .study-visual svg{width:100%;height:auto;max-height:150px;}
-  .study-visual .visual-caption{position:absolute;right:18px;bottom:10px;font-size:.66rem;opacity:.7;}
+  .study-evidence{display:block;margin-bottom:24px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface);}
+  .study-evidence img{display:block;width:100%;height:auto;object-fit:contain;}
+  .study-evidence figcaption{font-size:.76rem;color:var(--grey);padding:10px 15px;border-top:1px solid var(--line);}
   .study-dialog .modal-stat{border:1px solid var(--line);background:var(--surface);padding:16px;border-radius:12px;}
   .study-dialog .modal-stat strong{display:block;color:var(--accent-text);font:900 1.3rem var(--display);margin-top:6px;}
   .study-dialog .modal-columns{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:24px;}
@@ -354,7 +352,7 @@
   .study-close{position:absolute;top:20px;right:20px;border:1px solid var(--line);background:white;border-radius:50%;width:40px;height:40px;font-size:1.6rem;cursor:pointer;color:var(--navy);}
   .study-dialog:focus{outline:none;}
   @media(max-width:850px){.study-card{flex-basis:calc((100% - 1px)/2);}}
-  @media(max-width:560px){.study-card{flex-basis:88%;}.study-controls{margin-top:-34px;}.study-dialog .modal-stats{grid-template-columns:1fr 1fr;}.study-dialog .modal-columns{grid-template-columns:1fr;gap:18px;}.study-dialog .study-modal-top{padding-top:58px;}.study-visual{grid-template-columns:1fr;padding-bottom:36px;}}
+  @media(max-width:560px){.study-card{flex-basis:88%;}.study-controls{margin-top:-34px;}.study-dialog .modal-stats{grid-template-columns:1fr 1fr;}.study-dialog .modal-columns{grid-template-columns:1fr;gap:18px;}.study-dialog .study-modal-top{padding-top:58px;}}
   @media(prefers-reduced-motion:reduce){.study-carousel{scroll-behavior:auto;}.study-card,.study-arrow{transition:none;}}
 </style>
 </head>
@@ -599,15 +597,10 @@
     <p class="modal-lead" id="study-modal-lead"></p>
   </div>
   <div class="modal-body">
-    <div class="study-visual" role="img" aria-label="Illustrative growth graphic, not a screenshot or verified monthly revenue chart">
-      <div><span>Upwork success story</span><strong id="study-visual-value"></strong><span id="study-visual-type"></span></div>
-      <svg viewBox="0 0 300 140" aria-hidden="true" focusable="false">
-        <path d="M4 122H296M4 82H296M4 42H296" fill="none" stroke="#ffffff" stroke-opacity=".22" stroke-dasharray="5 7"/>
-        <path d="M8 118C56 113 72 105 105 91S159 83 187 57 244 40 290 12" fill="none" stroke="#8BE0B2" stroke-width="7" stroke-linecap="round"/>
-        <circle cx="290" cy="12" r="8" fill="#fff"/>
-      </svg>
-      <span class="visual-caption">Illustrative graphic · not monthly revenue data</span>
-    </div>
+    <figure class="study-evidence">
+      <a id="study-image-link" target="_blank" rel="noopener noreferrer" aria-label="Open full-size Upwork results screenshot"><img id="study-image" alt="Upwork earnings, job success score and proposal statistics screenshot" loading="lazy"></a>
+      <figcaption>Upwork results screenshot · Select image to view full size</figcaption>
+    </figure>
     <div class="modal-stats" id="study-modal-stats"></div>
     <div class="modal-columns">
       <section><h3>The challenge</h3><ul id="study-modal-challenges"></ul></section>
@@ -723,7 +716,7 @@
   const CASE_STUDIES = [
     {
       title:'From Zero to $90K: Turning a Freelancer into a Top Rated Success',
-      amount:'$90K',type:'Freelancer',status:'Top Rated / Top Rated Plus',duration:'12 months',
+      amount:'$90K',type:'Freelancer',status:'Top Rated / Top Rated Plus',duration:'12 months',image:'assets/case-study-90k.png',
       lead:'How profile optimization and consistent Upwork outreach helped turn a new freelancer profile into a profitable business.',
       challenges:['Low visibility in Upwork search','Difficulty winning projects','Inconsistent client communication','Limited credibility with prospective clients'],
       approach:['SEO-focused profile bio and stronger portfolio','12–15 personalized proposals each day','Clear expertise and credibility signals','Improved proposal-to-chat and chat-to-close process','Repeatable outreach and follow-up system'],
@@ -732,7 +725,7 @@
     },
     {
       title:'Building Credibility, Winning Clients: $19K Achieved in Record Time',
-      amount:'$19K',type:'Freelancer',status:'Top Rated',duration:'6 months',
+      amount:'$19K',type:'Freelancer',status:'Top Rated',duration:'6 months',image:'assets/case-study-19k.png',
       lead:'A stronger profile, personalized outreach and a focused conversion system helped a freelancer build a profitable Upwork presence.',
       challenges:['Low profile visibility','Struggling to close clients','No reliable outreach system'],
       approach:['Profile optimization','Personalized client outreach','Positioning and branding','Conversion-focused communication','Scaling the repeatable growth process'],
@@ -741,7 +734,7 @@
     },
     {
       title:'Scaling Teams, Securing Growth: $50K as a Top Rated Agency',
-      amount:'$50K',type:'Agency',status:'Top Rated Agency',duration:'9 months',
+      amount:'$50K',type:'Agency',status:'Top Rated Agency',duration:'9 months',image:'assets/case-study-50k.png',
       lead:'An agency-focused outreach and credibility strategy helped build a repeatable Upwork client acquisition engine.',
       challenges:['No agency outreach system','Difficulty standing out against freelancers','Low client trust','Poor proposal-to-chat ratio'],
       approach:['Agency-focused profile positioning','Daily targeted proposals to businesses','Case studies showcasing team expertise','Improved proposals and discovery calls','Repeatable bidding and follow-up workflow'],
@@ -750,7 +743,7 @@
     },
     {
       title:'Authority + Outreach = $65K: How We Built a Profitable Agency Profile',
-      amount:'$65K',type:'Agency',status:'Top Rated Agency',duration:'10 months',
+      amount:'$65K',type:'Agency',status:'Top Rated Agency',duration:'10 months',image:'assets/case-study-65k.png',
       lead:'Niche-focused optimization, consistent proposals and stronger authority helped an agency compete for and win Upwork projects.',
       challenges:['Low visibility in Upwork agency searches','Competition from established agencies','Low proposal-to-chat ratio','No consistent acquisition system'],
       approach:['Niche-focused profile and portfolio','12–15 personalized proposals daily','Team expertise and case-study positioning','Proposal templates and call training','Repeatable outreach and follow-up'],
@@ -770,8 +763,9 @@
   function openStudy(study){
     document.getElementById('study-modal-title').textContent=study.title;
     document.getElementById('study-modal-lead').textContent=study.lead;
-    document.getElementById('study-visual-value').textContent=study.amount;
-    document.getElementById('study-visual-type').textContent=study.type+' · '+study.status;
+    document.getElementById('study-image').src=study.image;
+    document.getElementById('study-image').alt=study.type+' Upwork results screenshot showing '+study.amount+' in earnings and proposal statistics';
+    document.getElementById('study-image-link').href=study.image;
     const stats=document.getElementById('study-modal-stats');
     stats.replaceChildren(...[['Revenue',study.amount],['Timeline',study.duration],['Profile',study.type],['Status',study.status]].map(([label,value])=>{
       const box=document.createElement('div');box.className='modal-stat';
